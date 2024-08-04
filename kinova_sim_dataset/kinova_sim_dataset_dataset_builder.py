@@ -7,7 +7,7 @@ import tensorflow_datasets as tfds
 import tensorflow_hub as hub
 
 
-class KinovaDataset(tfds.core.GeneratorBasedBuilder):
+class KinovaSimDataset(tfds.core.GeneratorBasedBuilder):
     """DatasetBuilder for example dataset."""
 
     VERSION = tfds.core.Version('1.0.0')
@@ -26,7 +26,7 @@ class KinovaDataset(tfds.core.GeneratorBasedBuilder):
                 'steps': tfds.features.Dataset({
                     'observation': tfds.features.FeaturesDict({
                         'image': tfds.features.Image(
-                            shape=(480, 640, 3),
+                            shape=(256, 256, 3),
                             dtype=np.uint8,
                             encoding_format='png',
                             doc='Main camera RGB observation.',
@@ -90,8 +90,8 @@ class KinovaDataset(tfds.core.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager: tfds.download.DownloadManager):
         """Define data splits."""
         return {
-            'train': self._generate_examples(path='data/training_data_unorm_100/episode_*.npy'),
-            'val': self._generate_examples(path='data/val_data_unorm_100/episode_*.npy'),
+            'train': self._generate_examples(path='data/training_data_500/episode_*.npy'),
+            'val': self._generate_examples(path='data/validation_data_500/episode_*.npy'),
         }
 
     def _generate_examples(self, path) -> Iterator[Tuple[str, Any]]:

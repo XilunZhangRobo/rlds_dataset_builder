@@ -1,5 +1,8 @@
 */data
+*/prev_data
+*/scripted_data_variation
 wandb
 __pycache__
 .idea
 *.zip
+*.png

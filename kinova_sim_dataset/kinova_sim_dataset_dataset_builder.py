@@ -90,8 +90,8 @@ class KinovaSimDataset(tfds.core.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager: tfds.download.DownloadManager):
         """Define data splits."""
         return {
-            'train': self._generate_examples(path='data/training_data_500/episode_*.npy'),
-            'val': self._generate_examples(path='data/validation_data_500/episode_*.npy'),
+            'train': self._generate_examples(path='data/training_data_1/episode_*.npy'),
+            'val': self._generate_examples(path='data/validation_data_1/episode_*.npy'),
         }
 
     def _generate_examples(self, path) -> Iterator[Tuple[str, Any]]:
